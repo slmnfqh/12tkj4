@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tampilkan JSON</title>
+</head>
+<body>
+    <pre id="json-output"></pre> <!-- Elemen untuk menampilkan JSON -->
+
+    <script>
+        async function loadJSON() {
+            try {
+                const response = await fetch("data.json"); // Ambil data dari file JSON
+                const data = await response.json(); // Konversi ke objek JavaScript
+                
+                // Tampilkan JSON utuh di halaman
+                document.getElementById("json-output").textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error("Gagal memuat JSON:", error);
+            }
+        }
+
+        // Panggil fungsi saat halaman dimuat
+        loadJSON();
+    </script>
+</body>
+</html>
